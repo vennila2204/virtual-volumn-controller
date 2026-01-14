@@ -1,0 +1,42 @@
+<!-- templates/dish_details.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ dish_name }} Details</title>
+    <link rel="stylesheet" href="st.css">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ dish_name }} Details</h1>
+        <div class="details">
+            <p><strong>Ingredients:</strong> {{ ingredients }}</p>
+            <p><strong>Nutrients:</strong> {{ nutrients }}</p>
+            <p><strong>Health:</strong> {{ health }}</p>
+            <p><strong>Native:</strong> {{ native }}</p>
+        </div>
+        <div class="statistics">
+            <h2>Statistics</h2>
+            <div class="statistic" style="background-color: #f9c922;">
+                <h3>Sell Percentage</h3>
+                <p>{{ sell_percentage }}%</p>
+            </div>
+            <div class="statistic" style="background-color: #f7d684;">
+                <h3>Favorite Percentage</h3>
+                <p>{{ favorite_percentage }}%</p>
+            </div>
+            <div class="statistic" style="background-color: #f5e3cc;">
+                <h3>Repetition of Orders</h3>
+                <p>{{ repetition_of_orders }}</p>
+            </div>
+            <div class="statistic" style="background-color: #f3f0ea;">
+                <h3>Ratings</h3>
+                <p>{{ ratings }}</p>
+            </div>
+        
+        
+    </div>
+</body>
+</html>

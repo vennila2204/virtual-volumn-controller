@@ -1,0 +1,53 @@
+<!-- templates/menu.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="sty.css">
+</head>
+<body style="background-color: #f39c12;">
+    <div class="container">
+        <h1 style="text-align: center; color: #fff;">Dish List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dish Name</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for dish in dish_list %}
+                    <tr>
+                        <td>{{ dish['DishName'] }}</td>
+                        <td>{{ dish['Ingredients'] }}</td>
+                        <td>{{ dish['Nutrients'] }}</td>
+                        <td>{{ dish['HealthInfo'] }}</td>
+                        <td>{{ dish['Culture'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form method="POST" action="{{ url_for('add_dish') }}" class="add-dish-form">
+            <label for="dishName">Dish Name:</label>
+            <input type="text" id="dishName" name="dishName" required>
+
+            <label for="ingredients">Ingredients:</label>
+            <textarea id="ingredients" name="ingredients" rows="4" required></textarea>
+
+            <label for="nutrients">Nutrients:</label>
+            <input type="text" id="nutrients" name="nutrients" required>
+
+            <label for="healthInfo">Health Info:</label>
+            <input type="text" id="healthInfo" name="healthInfo" required>
+
+            <label for="culture">Culture:</label>
+            <input type="text" id="culture" name="culture" required>
+
+            <button type="submit" class="btn btn-add">Add Dish</button>
+        </form>
+    </div>
+</body>
+</html>

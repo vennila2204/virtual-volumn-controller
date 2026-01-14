@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #d98c08;
+        }
+
+        .kitchen-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .kitchen-info img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .boxes-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 200px;
+            height: 300px;
+            margin: 10px;
+            text-align: center;
+            border-radius: 5px;
+            overflow: hidden;
+            background-color: #f39c12; /* Yellow background color */
+        }
+
+        .box img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 2px solid #fff; /* White border under image */
+        }
+
+        .box-name {
+            padding: 10px;
+            color: #fff;
+            font-weight: bold;
+            background-color: #e74c3c; /* Different background color for box name */
+        }
+    </style>
+    <title>5 Boxes Page</title>
+</head>
+<body>
+    <div class="kitchen-info">
+        <img src="k1.jfif" alt="Kitchen Image">
+        <h2>Amma samayal</h2>
+        <p>Location: RS puram,Coimbatore</p>
+    </div>
+
+    <div class="boxes-container">
+        <div class="box">
+            <img src="men.jfif" alt="Menu Image">
+            <div class="box-name"><a href="menu.html">Menu</a></div>
+        </div>
+        <div class="box">
+            <img src="ing.jpeg" alt="Ingredients Image">
+            <div class="box-name"><a href="classy.html">Ingredients</a></div>
+        </div>
+        <div class="box">
+            <img src="nut.jfif" alt="Nutrients Image">
+            <div class="box-name"><a href="classy.html">Nutrients</a></div>
+        </div>
+        <div class="box">
+            <img src="heal.jfif" alt="Health Image">
+            <div class="box-name"><a href="classy.html">Health</a></div>
+        </div>
+        <div class="box">
+            <img src="cul.jfif" alt="Culture Image">
+            <div class="box-name"><a href="classy.html">Culture</a></div>
+        </div>
+    </div>
+</body>
+</html>

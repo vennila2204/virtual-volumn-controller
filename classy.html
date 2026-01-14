@@ -1,0 +1,41 @@
+<!-- templates/classify.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ dish_name }} - Classification</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ dish_name }} - Classification</h1>
+    <table>
+        <tr>
+            <th>Ingredient</th>
+        </tr>
+        {% for ingredient in ingredients.split(', ') %}
+            <tr>
+                <td>{{ ingredient }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p><strong>Category:</strong> {{ category }}</p>
+</body>
+</html>

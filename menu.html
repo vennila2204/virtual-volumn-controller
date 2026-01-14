@@ -1,0 +1,57 @@
+<!-- templates/menu.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="sty.css">
+</head>
+<body style="background-color: #f39c12;">
+    <div class="container">
+        <h1 style="text-align: center; color: #fff;">Dish List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dish Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dish in dish_list %}
+                    <tr>
+                        <td>
+                            <a href="dish.html">{{ dish['DishName'] }}</a>
+                        </td>
+                        <td>
+                            <!-- Actions for each dish (if needed) -->
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Form for adding a new dish -->
+        <form method="POST" action="appp.py" class="add-dish-form">
+            <h2>Add a New Dish</h2>
+            <label for="newDishName">Dish Name:</label>
+            <input type="text" id="newDishName" name="newDishName" required>
+
+            <label for="newIngredients">Ingredients:</label>
+            <textarea id="newIngredients" name="newIngredients" rows="4" required></textarea>
+
+            <label for="newNutrients">Nutrients:</label>
+            <input type="text" id="newNutrients" name="newNutrients" required>
+
+            <label for="newHealthInfo">Health Info:</label>
+            <input type="text" id="newHealthInfo" name="newHealthInfo" required>
+
+            <label for="newCulture">Culture:</label>
+            <input type="text" id="newCulture" name="newCulture" required>
+
+            <button type="submit" class="btn btn-action">Add Dish</button>
+        </form>
+    </div>
+</body>
+</html>

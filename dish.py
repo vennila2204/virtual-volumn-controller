@@ -1,0 +1,61 @@
+from flask import Flask, render_template, request, redirect, url_for
+import pandas as pd
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
+
+app = Flask(__name__)
+
+# Load sample data (you can replace this with your dataset)
+menu_data = pd.read_csv('tamilnadu_dataset.csv')
+statistics_data = pd.read_csv('food_statistics.csv')
+
+@app.route('/')
+def menu():
+    return render_template('menu.html', dishes=menu_data['Dish Name'].tolist())
+
+@app.route('/dish_details/<dish_name>')
+def dish_details(dish_name):
+    # Get details of the clicked dish
+    dish_details = menu_data[menu_data['Dish Name'] == dish_name].squeeze()
+
+    # Get statistics data for the dish
+    dish_statistics = statistics_data[statistics_data['Dish Name'] == dish_name].squeeze()
+
+    # Create graphs
+    sell_percentage_graph = generate_bar_chart('Sell Percentage', dish_statistics['Sell Percentage'])
+    favorite_percentage_graph = generate_bar_chart('Favorite Percentage', dish_statistics['Favorite Percentage'])
+    repetition_of_orders_graph = generate_bar_chart('Repetition of Orders', dish_statistics['Repetition of Orders'])
+    ratings_graph = generate_bar_chart('Ratings', dish_statistics['Ratings'])
+
+    return render_template(
+        'dish_details.html',
+        dish_name=dish_details['Dish Name'],
+        ingredients=dish_details['Ingredients'],
+        nutrients=dish_details['Nutrients'],
+        health=dish_details['Health'],
+        native=dish_details['Native'],
+        sell_percentage_graph=sell_percentage_graph,
+        favorite_percentage_graph=favorite_percentage_graph,
+        repetition_of_orders_graph=repetition_of_orders_graph,
+        ratings_graph=ratings_graph
+    )
+
+def generate_bar_chart(label, value):
+    fig, ax = plt.subplots()
+    ax.bar(label, value, color='skyblue')
+    ax.set_ylabel(label)
+    ax.set_title(f'{label} Bar Chart')
+
+    # Save the plot to a BytesIO object
+    image_stream = BytesIO()
+    plt.savefig(image_stream, format='png')
+    plt.close()
+
+    # Convert the BytesIO object to a base64-encoded string
+    encoded_image = base64.b64encode(image_stream.getvalue()).decode('utf-8')
+
+    return f'data:image/png;base64,{encoded_image}'
+
+if __name__ == '__main__':
+    app.run(debug=True)
